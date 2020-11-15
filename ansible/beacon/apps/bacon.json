@@ -332,7 +332,7 @@
 											"warningThreshold": "50",
 											"noMetricData": "KeepState"
 										},
-										"name": "usage_user"
+										"name": "user cpu"
 									}
 								],
 								"healthSourceSettings": {
@@ -622,7 +622,7 @@
 											"warningThreshold": "50",
 											"noMetricData": "KeepState"
 										},
-										"name": "usage_user"
+										"name": "user cpu"
 									}
 								],
 								"healthSourceSettings": {

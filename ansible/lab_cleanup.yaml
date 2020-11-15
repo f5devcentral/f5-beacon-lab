@@ -161,9 +161,9 @@
         - name: "Bacon West"
           type: monitor
         - name: "Bacon East DNS"
-          type: monitor
+          type: dns-monitor
         - name: "Bacon West DNS"
-          type: monitor
+          type: dns-monitor
         - name: "Bacon East API"
           type: monitor
         - name: "Bacon West API"
