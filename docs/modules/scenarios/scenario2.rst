@@ -1,7 +1,7 @@
 Scenario 2: BIG-IP Virtual Down
 ===============================
 
-In this scenario, we will cause the BIG-IP LTM Pool for the East web-service to fail its health check which will cause the VirtualServer to go offline. We will then use the Beacon portal to identify where in the application map the issue is occuring.
+In this scenario, we will cause the BIG-IP LTM Pool for the East web-service to fail its health check which will cause the VirtualServer to go offline. We will then use the Beacon portal to identify where in the application map the issue is occurring.
 
 Steps
 -----
@@ -25,7 +25,7 @@ Create the Outage
 
    - The **Beacon Monitor** in the East region. This tells us that an external user most likely would be failing as the Beacon synthetic is failing.
    - The **WEB-VS-E** component which represents the Web VirtualServer on the BIG-IP is reporting a Critical status.
-   - Just as important to note, is that the **WEB-E** appliation itself is still reporting green. This means the internal http monitor from telegraf is still passing. This further confirms that the issue appears to be with the BIG-IP VS.
+   - Just as important to note, is that the **WEB-E** application itself is still reporting green. This means the internal http monitor from telegraf is still passing. This further confirms that the issue appears to be with the BIG-IP VS.
    - The app-map also shows that the entire **West** region appears to be in a Healthy state.
 
    .. NOTE:: UDF proxies the services and can cache the page us **UP** when the BIG-IP Virtual is actually offline. The Beacon Monitor may be hitting the UDF cache and stay up longer than expected. If your app-map shows the VS critical but the Monitor healthy, this is why. In another scenario we force the response string for the Beacon monitor to fail regardless of the cache.
@@ -36,7 +36,7 @@ Create the Outage
 
 #. Select the **Beacon Monitor** component.
 
-   Note that the Critical Health Reason is give at the top of the component showing us that the health check is failing connection.
+   Note that the Critical Health Reason is given at the top of the component showing us that the health check is failing connection.
 
    |mon_reason|
 
@@ -46,7 +46,7 @@ Create the Outage
 
    .. NOTE:: You can view what the various health scores mean |health_numbers| 
 
-#. Now select the **WEB-VS-E** component and you can see that the health Metric has also increaed to an unhealthy level. Since this component has a **metric-health-conditon** associated with a BIG-IP VirtualServer, we can correlate that the VirtualServer is having issues.
+#. Now select the **WEB-VS-E** component and you can see that the health Metric has also increased to an unhealthy level. Since this component has a **metric-health-condition** associated with a BIG-IP VirtualServer, we can correlate that the VirtualServer is having issues.
 
    |web_vs_health| 
 
@@ -65,7 +65,7 @@ Now that we know which component is having the issue, we can go to the BIG-IP to
    - username: ``admin``
    - password: ``3eaconlab``
 
-#. Navigate to **Local Traffic >> Pools** and then change the Parition to **FrontEnd**.
+#. Navigate to **Local Traffic >> Pools** and then change the Partition to **FrontEnd**.
 
    |lt_pools|  |partition|
 
@@ -89,7 +89,7 @@ Now that we know which component is having the issue, we can go to the BIG-IP to
    |healthy_again|
 
 
-#. Finally, navigate over to the **Health & Events** tab to see the historical events for the changes that were just made. On this page we can see the critical state on the health history bar as well as the events for each components health changes.
+#. Finally, navigate over to the **Health & Events** tab to see the historical events for the changes that were just made. On this page we can see the critical state on the health history bar as well as the events for each component's health changes.
 
    |hae|
 

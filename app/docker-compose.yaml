@@ -51,5 +51,5 @@ services:
     volumes:
       # - ./locust:/mnt/locust
       - ./locust/locustfile.py:/mnt/locust/locustfile.py
-    command: -f /mnt/locust/locustfile.py -u 10 -r 10 -H https://${BACONURL}
+    command: -f /mnt/locust/locustfile.py -u 10 -r 10 -H https://
     # command: -f /mnt/locust/locustfile.py --headless -u 10 -r 10 -t 30m -H ${BACONURL}
