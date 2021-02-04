@@ -1,5 +1,5 @@
 {
-    "title": "Bacon BIG-IP System",
+    "title": "Trading BIG-IP System",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
     "metrics": [
@@ -9,7 +9,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "bacon-bip.local"
+                        "trading-bip.local"
                     ]
                 }
             ],
@@ -23,7 +23,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "bacon-bip.local"
+                        "trading-bip.local"
                     ]
                 }
             ],

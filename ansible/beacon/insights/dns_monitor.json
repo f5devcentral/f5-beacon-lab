@@ -1,5 +1,5 @@
 {
-    "title": "Bacon DNS Monitors",
+    "title": "Trading DNS Monitors",
     "description": "",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
@@ -10,7 +10,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "Bacon East DNS"
+                        "Trading East DNS"
                     ]
                 }
             ],
@@ -24,7 +24,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "Bacon East DNS"
+                        "Trading East DNS"
                     ]
                 }
             ],
@@ -38,7 +38,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "Bacon West DNS"
+                        "Trading West DNS"
                     ]
                 }
             ],
@@ -52,7 +52,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "Bacon West DNS"
+                        "Trading West DNS"
                     ]
                 }
             ],

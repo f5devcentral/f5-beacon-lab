@@ -25,7 +25,7 @@
 
 
 - name: Stop Telegraf
-  hosts: bacon
+  hosts: trading
   gather_facts: false
   
   vars:
@@ -69,7 +69,7 @@
 
     - name: Delete Ingest Token
       uri:
-        url: "{{csAPI}}/beacon/v1/telemetry-token/bacon_token?force=true"
+        url: "{{csAPI}}/beacon/v1/telemetry-token/trading_token?force=true"
         method: DELETE
         body_format: json
         headers:
@@ -129,12 +129,12 @@
       register: deleteMonitors
       delegate_to: localhost
       loop:
-        - "Bacon East"
-        - "Bacon West"
-        - "Bacon East DNS"
-        - "Bacon West DNS"
-        - "Bacon East API"
-        - "Bacon West API"
+        - "Trading East"
+        - "Trading West"
+        - "Trading East DNS"
+        - "Trading West DNS"
+        - "Trading East API"
+        - "Trading West API"
 
     - name: Wait 5 seconds for inflight data to settle
       pause:
@@ -152,21 +152,21 @@
       register: deleteSources
       delegate_to: localhost
       loop:
-        - name: bacon_east
+        - name: trading_east
           type: telegraf
-        - name: bacon_west
+        - name: trading_west
           type: telegraf
-        - name: "Bacon East"
+        - name: "Trading East"
           type: monitor
-        - name: "Bacon West"
+        - name: "Trading West"
           type: monitor
-        - name: "Bacon East DNS"
+        - name: "Trading East DNS"
           type: dns-monitor
-        - name: "Bacon West DNS"
+        - name: "Trading West DNS"
           type: dns-monitor
-        - name: "Bacon East API"
+        - name: "Trading East API"
           type: monitor
-        - name: "Bacon West API"
+        - name: "Trading West API"
           type: monitor
-        - name: "bacon-bip.local"
+        - name: "trading-bip.local"
           type: bigip-system

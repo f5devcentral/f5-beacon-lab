@@ -6,7 +6,7 @@
 				"version": "v1"
 			},
 			"application": {
-				"name": "Bacon",
+				"name": "Trading",
 				"description": "",
 				"labels": {
 					"latitude": "47.608013",
@@ -43,7 +43,7 @@
 															{
 																"measurement": "nginx",
 																"tags": {
-																	"host": "bacon_east"
+																	"host": "trading_east"
 																},
 																"field": "requests",
 																"healthSettings": {
@@ -59,7 +59,7 @@
 															{
 																"measurement": "http_response",
 																"tags": {
-																	"host": "bacon_east",
+																	"host": "trading_east",
 																	"server": "http://react:8080"
 																},
 																"field": "http_response_code",
@@ -86,7 +86,7 @@
 														"measurement": "bigip-virtual",
 														"tags": {
 															"name": "/FrontEnd/WEB/serviceMain",
-															"source": "bacon-bip.local"
+															"source": "trading-bip.local"
 														},
 														"field": "healthStatus",
 														"healthSettings": {
@@ -106,7 +106,7 @@
 												},
 												"insights": [
 													{
-														"name": "Bacon BIG-IP WebVS"
+														"name": "Trading BIG-IP WebVS"
 													}
 												]
 											},
@@ -124,8 +124,8 @@
 															{
 																"measurement": "docker_container_cpu",
 																"tags": {
-																	"container_name": "bacon_app_eapi_1",
-																	"host": "bacon_east"
+																	"container_name": "trading_app_eapi_1",
+																	"host": "trading_east"
 																},
 																"field": "usage_percent",
 																"healthSettings": {
@@ -141,7 +141,7 @@
 															{
 																"measurement": "http_response",
 																"tags": {
-																	"host": "bacon_east",
+																	"host": "trading_east",
 																	"server": "http://eapi:3000/apicheck"
 																},
 																"field": "http_response_code",
@@ -168,7 +168,7 @@
 														"measurement": "bigip-virtual",
 														"tags": {
 															"name": "/FrontEnd/API/serviceMain",
-															"source": "bacon-bip.local"
+															"source": "trading-bip.local"
 														},
 														"field": "healthStatus",
 														"healthSettings": {
@@ -188,7 +188,7 @@
 												},
 												"insights": [
 													{
-														"name": "Bacon BIG-IP APIVS"
+														"name": "Trading BIG-IP APIVS"
 													}
 												]
 											}
@@ -197,7 +197,7 @@
 											{
 												"measurement": "bigip-system",
 												"tags": {
-													"source": "bacon-bip.local"
+													"source": "trading-bip.local"
 												},
 												"field": "systemCpuUsage",
 												"healthSettings": {
@@ -213,7 +213,7 @@
 											{
 												"measurement": "bigip-system",
 												"tags": {
-													"source": "bacon-bip.local"
+													"source": "trading-bip.local"
 												},
 												"field": "tmmMemoryUsage",
 												"healthSettings": {
@@ -233,7 +233,7 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon BIG-IP System"
+												"name": "Trading BIG-IP System"
 											}
 										]
 									}
@@ -254,7 +254,7 @@
 									{
 										"measurement": "monitor",
 										"tags": {
-											"source": "Bacon East"
+											"source": "Trading East"
 										},
 										"field": "healthStatus",
 										"healthSettings": {
@@ -274,7 +274,7 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon East Monitor"
+										"name": "Trading East Monitor"
 									}
 								]
 							},
@@ -292,7 +292,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_east"
+													"host": "trading_east"
 												},
 												"field": "connections_current",
 												"healthSettings": {
@@ -312,7 +312,7 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon MongoDB East"
+												"name": "Trading MongoDB East"
 											}
 										]
 									}
@@ -321,7 +321,7 @@
 									{
 										"measurement": "cpu",
 										"tags": {
-											"host": "bacon_east"
+											"host": "trading_east"
 										},
 										"field": "usage_user",
 										"healthSettings": {
@@ -341,10 +341,10 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon East Containers"
+										"name": "Trading East Containers"
 									},
 									{
-										"name": "Bacon VM East"
+										"name": "Trading VM East"
 									}
 								]
 							}
@@ -380,7 +380,7 @@
 													{
 														"measurement": "nginx",
 														"tags": {
-															"host": "bacon_west"
+															"host": "trading_west"
 														},
 														"field": "requests",
 														"healthSettings": {
@@ -396,7 +396,7 @@
 													{
 														"measurement": "http_response",
 														"tags": {
-															"host": "bacon_west",
+															"host": "trading_west",
 															"server": "http://react:8080"
 														},
 														"field": "http_response_code",
@@ -426,8 +426,8 @@
 													{
 														"measurement": "docker_container_cpu",
 														"tags": {
-															"container_name": "bacon_app_eapi_1",
-															"host": "bacon_west"
+															"container_name": "trading_app_eapi_1",
+															"host": "trading_west"
 														},
 														"field": "usage_percent",
 														"healthSettings": {
@@ -443,7 +443,7 @@
 													{
 														"measurement": "http_response",
 														"tags": {
-															"host": "bacon_west",
+															"host": "trading_west",
 															"server": "http://eapi:3000/apicheck"
 														},
 														"field": "http_response_code",
@@ -469,8 +469,8 @@
 											{
 												"measurement": "docker_container_mem",
 												"tags": {
-													"container_name": "bacon_app_lb_1",
-													"host": "bacon_west"
+													"container_name": "trading_app_lb_1",
+													"host": "trading_west"
 												},
 												"field": "usage_percent",
 												"healthSettings": {
@@ -486,8 +486,8 @@
 											{
 												"measurement": "docker_container_cpu",
 												"tags": {
-													"container_name": "bacon_app_lb_1",
-													"host": "bacon_west"
+													"container_name": "trading_app_lb_1",
+													"host": "trading_west"
 												},
 												"field": "usage_percent",
 												"healthSettings": {
@@ -507,7 +507,7 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon NGINX Plus Requests"
+												"name": "Trading NGINX Plus Requests"
 											}
 										]
 									}
@@ -528,7 +528,7 @@
 									{
 										"measurement": "monitor",
 										"tags": {
-											"source": "Bacon West"
+											"source": "Trading West"
 										},
 										"field": "healthStatus",
 										"healthSettings": {
@@ -548,7 +548,7 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon West Monitor"
+										"name": "Trading West Monitor"
 									}
 								]
 							},
@@ -566,7 +566,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_west"
+													"host": "trading_west"
 												},
 												"field": "connections_current",
 												"healthSettings": {
@@ -582,7 +582,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_west"
+													"host": "trading_west"
 												},
 												"field": "document_returned",
 												"healthSettings": {
@@ -602,7 +602,7 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon MongoDB West"
+												"name": "Trading MongoDB West"
 											}
 										]
 									}
@@ -611,7 +611,7 @@
 									{
 										"measurement": "cpu",
 										"tags": {
-											"host": "bacon_west"
+											"host": "trading_west"
 										},
 										"field": "usage_user",
 										"healthSettings": {
@@ -631,10 +631,10 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon VM West"
+										"name": "Trading VM West"
 									},
 									{
-										"name": "Bacon West Containers"
+										"name": "Trading West Containers"
 									}
 								]
 							}
@@ -655,7 +655,7 @@
 							{
 								"measurement": "dns-monitor",
 								"tags": {
-									"source": "Bacon East DNS"
+									"source": "Trading East DNS"
 								},
 								"field": "healthStatus",
 								"healthSettings": {
@@ -671,7 +671,7 @@
 							{
 								"measurement": "dns-monitor",
 								"tags": {
-									"source": "Bacon West DNS"
+									"source": "Trading West DNS"
 								},
 								"field": "healthStatus",
 								"healthSettings": {
@@ -691,7 +691,7 @@
 						},
 						"insights": [
 							{
-								"name": "Bacon DNS Monitors"
+								"name": "Trading DNS Monitors"
 							}
 						]
 					}

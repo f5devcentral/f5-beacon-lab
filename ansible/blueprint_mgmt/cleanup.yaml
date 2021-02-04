@@ -32,7 +32,7 @@
         state: absent
       become: yes
 
-- name: Clear TS Token
+- name: Clear BIG-IP TS
   hosts: localhost
   connection: local
   gather_facts: false
@@ -57,6 +57,13 @@
         atc_service: Telemetry
         atc_declaration: "{{ lookup('template', '../bigip/ts.json') }}"
 
+- name: Clear Control Server
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+
     - name: Remove nginx certs
       file:
         path: "{{ item }}"
@@ -68,4 +75,9 @@
       file:
         path: /home/ubuntu/devel
         state: absent
+      become: yes
+
+    # currently does not work
+    - name: Clear log file
+      shell: history -c && history -w
       become: yes

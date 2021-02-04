@@ -1,5 +1,5 @@
 {
-    "title": "Bacon MongoDB West",
+    "title": "Trading MongoDB West",
     "description": "",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
@@ -10,7 +10,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 }
             ],
@@ -24,7 +24,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 }
             ],
@@ -38,7 +38,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 }
             ],
@@ -52,27 +52,13 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 }
             ],
             "field": "document_returned",
             "function": "difference",
             "metricName": "Doc Returns"
-        },
-        {
-            "measurement": "mongodb",
-            "tags": [
-                {
-                    "key": "host",
-                    "values": [
-                        "bacon_west"
-                    ]
-                }
-            ],
-            "field": "queries",
-            "function": "difference",
-            "metricName": "Queries"
         }
     ],
     "visualizationType": "VISUALIZATION_TYPE_STACKED_AREA",

@@ -15,21 +15,21 @@ import bacond2 from '../images/bacondance2.gif'
 import baconride from '../images/bacon_egg.gif'
 
 const items = [
-  {
-    src: baconride,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    src: bacond,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
-  },
-  {
-    src: bacond2,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
+  // {
+  //   src: baconride,
+  //   altText: 'Slide 1',
+  //   caption: 'Slide 1'
+  // },
+  // {
+  //   src: bacond,
+  //   altText: 'Slide 2',
+  //   caption: 'Slide 2'
+  // },
+  // {
+  //   src: bacond2,
+  //   altText: 'Slide 3',
+  //   caption: 'Slide 3'
+  // }
 ];
 
 
