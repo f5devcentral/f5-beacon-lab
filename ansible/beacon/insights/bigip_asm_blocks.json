@@ -1,0 +1,29 @@
+{
+  "title": "ASM WAF Blocks",
+  "category": "INS_CAT_SECURITY",
+  "severity": "INS_SEV_NONE",
+  "metrics": [
+      {
+          "measurement": "bigip-asm-avr",
+          "tags": [
+              {
+                  "key": "source",
+                  "values": [
+                      "trading-bip.local"
+                  ]
+              },
+              {
+                  "key": "action",
+                  "values": [
+                      "Blocked"
+                  ]
+              }
+          ],
+          "field": "hitCount",
+          "function": "mean",
+          "metricName": "Blocks"
+      }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_BAR",
+  "period": "1h"
+}
