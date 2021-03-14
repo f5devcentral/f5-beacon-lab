@@ -1,3 +1,5 @@
+#!/bin/bash
+
 arecords=( "trading-api.gslb.local" )
 nameserver="10.1.1.7"
 

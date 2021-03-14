@@ -1,0 +1,15 @@
+[Unit]
+Description=Lab Traffic
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/home/ubuntu/f5-beacon-lab/traffic-gen/dns.sh
+StandardOutput=file:/dev/null
+StandardError=file:/dev/null
+
+[Install]
+WantedBy=multi-user.target

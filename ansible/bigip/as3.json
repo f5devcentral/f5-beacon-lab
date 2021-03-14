@@ -31,6 +31,11 @@
                             "address": "10.1.1.7",
                             "port": 85,
                             "name": "api"
+                        },
+                        {
+                            "address": "10.1.1.7",
+                            "port": 443,
+                            "name": "web"
                         }
                     ]
                 },
@@ -40,7 +45,7 @@
                         "use": "west-dc"
                     },
                     "serverType": "generic-host",
-                    "monitors": [],
+                    "monitors": [{"bigip": "/Common/tcp"}],
                     "devices": [
                         {
                             "address": "10.1.1.6"
@@ -51,6 +56,11 @@
                             "address": "10.1.1.6",
                             "port": 85,
                             "name": "api"
+                        },
+                        {
+                            "address": "10.1.1.6",
+                            "port": 443,
+                            "name": "web"
                         }
                     ]
                 },
@@ -146,6 +156,34 @@
                                 "use": "/Common/Shared/west"
                             },
                             "virtualServer": "api"
+                        }
+                    ]
+                },
+                "trading-web-wideip": {
+                    "class": "GSLB_Domain",
+                    "domainName": "trading-web.gslb.local",
+                    "resourceRecordType": "A",
+                    "pools": [
+                        {
+                            "use": "trading-web-pool"
+                        }
+                    ]
+                },
+                "trading-web-pool": {
+                    "class": "GSLB_Pool",
+                    "resourceRecordType": "A",
+                    "members": [
+                        {
+                            "server": {
+                                "use": "/Common/Shared/east"
+                            },
+                            "virtualServer": "web"
+                        },
+                        {
+                            "server": {
+                                "use": "/Common/Shared/west"
+                            },
+                            "virtualServer": "web"
                         }
                     ]
                 },

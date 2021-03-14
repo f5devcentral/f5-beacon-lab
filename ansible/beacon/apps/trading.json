@@ -78,7 +78,8 @@
 															"metricsHealthAggregation": "WorstOf",
 															"dependencyHealthAggregation": "WorstOf"
 														},
-														"insights": []
+														"insights": [],
+														"notificationProfiles": []
 													}
 												],
 												"metrics": [
@@ -108,7 +109,8 @@
 													{
 														"name": "Trading BIG-IP WebVS"
 													}
-												]
+												],
+												"notificationProfiles": []
 											},
 											{
 												"name": "API-VS-E",
@@ -160,7 +162,8 @@
 															"metricsHealthAggregation": "WorstOf",
 															"dependencyHealthAggregation": "WorstOf"
 														},
-														"insights": []
+														"insights": [],
+														"notificationProfiles": []
 													}
 												],
 												"metrics": [
@@ -180,17 +183,35 @@
 															"noMetricData": "KeepState"
 														},
 														"name": "healthStatus"
+													},
+													{
+														"field": "activeMemberCnt",
+														"measurement": "bigip-pool",
+														"tags": {
+															"source": "trading-bip.local",
+															"name": "/FrontEnd/API/api_pool"
+														},
+														"name": "activeMemberCnt",
+														"healthSettings": {
+															"aggregation": "Min",
+															"timeRange": 1,
+															"operator": "LessThan",
+															"criticalThreshold": "2",
+															"warningThreshold": "3",
+															"noMetricData": "KeepState"
+														}
 													}
 												],
 												"healthSourceSettings": {
-													"metricsHealthAggregation": "WorstOf",
-													"dependencyHealthAggregation": "WorstOf"
+													"dependencyHealthAggregation": "WorstOf",
+													"metricsHealthAggregation": "WorstOf"
 												},
 												"insights": [
 													{
 														"name": "Trading BIG-IP APIVS"
 													}
-												]
+												],
+												"notificationProfiles": []
 											}
 										],
 										"metrics": [
@@ -235,7 +256,8 @@
 											{
 												"name": "Trading BIG-IP System"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [],
@@ -243,7 +265,8 @@
 									"metricsHealthAggregation": "WorstOf",
 									"dependencyHealthAggregation": "WorstOf"
 								},
-								"insights": []
+								"insights": [],
+								"notificationProfiles": []
 							},
 							{
 								"name": "Beacon Monitor-E",
@@ -276,7 +299,8 @@
 									{
 										"name": "Trading East Monitor"
 									}
-								]
+								],
+								"notificationProfiles": []
 							},
 							{
 								"name": "VM-E",
@@ -314,7 +338,8 @@
 											{
 												"name": "Trading MongoDB East"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [
@@ -346,7 +371,8 @@
 									{
 										"name": "Trading VM East"
 									}
-								]
+								],
+								"notificationProfiles": []
 							}
 						],
 						"metrics": [],
@@ -354,7 +380,8 @@
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"
 						},
-						"insights": []
+						"insights": [],
+						"notificationProfiles": []
 					},
 					{
 						"name": "West",
@@ -415,7 +442,8 @@
 													"metricsHealthAggregation": "WorstOf",
 													"dependencyHealthAggregation": "WorstOf"
 												},
-												"insights": []
+												"insights": [],
+												"notificationProfiles": []
 											},
 											{
 												"name": "API-W",
@@ -462,7 +490,8 @@
 													"metricsHealthAggregation": "WorstOf",
 													"dependencyHealthAggregation": "WorstOf"
 												},
-												"insights": []
+												"insights": [],
+												"notificationProfiles": []
 											}
 										],
 										"metrics": [
@@ -509,7 +538,8 @@
 											{
 												"name": "Trading NGINX Plus Requests"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [],
@@ -517,7 +547,8 @@
 									"metricsHealthAggregation": "WorstOf",
 									"dependencyHealthAggregation": "WorstOf"
 								},
-								"insights": []
+								"insights": [],
+								"notificationProfiles": []
 							},
 							{
 								"name": "Beacon Monitor-W",
@@ -550,7 +581,8 @@
 									{
 										"name": "Trading West Monitor"
 									}
-								]
+								],
+								"notificationProfiles": []
 							},
 							{
 								"name": "VM-W",
@@ -604,7 +636,8 @@
 											{
 												"name": "Trading MongoDB West"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [
@@ -636,7 +669,8 @@
 									{
 										"name": "Trading West Containers"
 									}
-								]
+								],
+								"notificationProfiles": []
 							}
 						],
 						"metrics": [],
@@ -644,13 +678,92 @@
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"
 						},
-						"insights": []
+						"insights": [],
+						"notificationProfiles": []
 					},
 					{
 						"name": "DNS",
 						"description": "",
 						"labels": {},
-						"dependencies": [],
+						"dependencies": [
+							{
+								"name": "BIG-IP GTM",
+								"description": "",
+								"labels": {},
+								"dependencies": [
+									{
+										"name": "API GSLB",
+										"description": "",
+										"labels": {},
+										"dependencies": [],
+										"metrics": [
+											{
+												"field": "healthStatus",
+												"measurement": "bigip-wide-ip",
+												"tags": {
+													"name": "/FrontEnd/DNS/trading-api.gslb.local",
+													"source": "trading-bip.local"
+												},
+												"name": "healthStatus",
+												"healthSettings": {
+													"aggregation": "",
+													"timeRange": 1,
+													"operator": "",
+													"criticalThreshold": "",
+													"warningThreshold": "",
+													"noMetricData": "KeepState"
+												}
+											}
+										],
+										"healthSourceSettings": {
+											"dependencyHealthAggregation": "WorstOf",
+											"metricsHealthAggregation": "WorstOf"
+										},
+										"insights": []
+									},
+									{
+										"name": "WEB GSLB",
+										"description": "",
+										"labels": {},
+										"dependencies": [],
+										"metrics": [
+											{
+												"field": "healthStatus",
+												"measurement": "bigip-wide-ip",
+												"tags": {
+													"name": "/FrontEnd/DNS/trading-web.gslb.local",
+													"source": "trading-bip.local"
+												},
+												"name": "healthStatus",
+												"healthSettings": {
+													"aggregation": "",
+													"timeRange": 1,
+													"operator": "",
+													"criticalThreshold": "",
+													"warningThreshold": "",
+													"noMetricData": "KeepState"
+												}
+											}
+										],
+										"healthSourceSettings": {
+											"dependencyHealthAggregation": "WorstOf",
+											"metricsHealthAggregation": "WorstOf"
+										},
+										"insights": []
+									}
+								],
+								"metrics": [],
+								"healthSourceSettings": {
+									"dependencyHealthAggregation": "WorstOf",
+									"metricsHealthAggregation": "WorstOf"
+								},
+								"insights": [
+									{
+										"name": "Trading GTM Requests"
+									}
+								]
+							}
+						],
 						"metrics": [
 							{
 								"measurement": "dns-monitor",
@@ -693,7 +806,8 @@
 							{
 								"name": "Trading DNS Monitors"
 							}
-						]
+						],
+						"notificationProfiles": []
 					}
 				],
 				"metrics": [],
@@ -701,7 +815,8 @@
 					"metricsHealthAggregation": "WorstOf",
 					"dependencyHealthAggregation": "WorstOf"
 				},
-				"insights": []
+				"insights": [],
+				"notificationProfiles": []
 			}
 		}
 	]

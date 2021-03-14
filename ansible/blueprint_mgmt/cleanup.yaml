@@ -1,6 +1,6 @@
 # This is only inteded to be used while working on Blueprint Updates
 - name: Clear Tokens on East/West
-  hosts: bacon
+  hosts: trading
   gather_facts: false
   
   vars:
@@ -28,7 +28,7 @@
 
     - name: Remove NGINX certs folder
       file:
-        path: /home/ubuntu/bacon_app/app/nginx-plus-nap/certs
+        path: /home/ubuntu/trading_app/app/nginx-plus-nap/certs
         state: absent
       become: yes
 
