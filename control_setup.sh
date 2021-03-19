@@ -55,12 +55,15 @@ fi
 pip3 install -r requirements.txt
 ansible-galaxy install f5devcentral.f5app_services_package -p ./roles/
 ansible-galaxy install f5devcentral.atc_deploy,v0.11.0 -p ./roles/ --force
-ansible-playbook system.yaml
 ansible-playbook server_config.yaml
 ansible-playbook bigip_config.yaml
 
 chmod +x /home/ubuntu/f5-beacon-lab/scenarios/*
+chmod +x /home/ubuntu/f5-beacon-lab/traffic-gen/*
 chown -R $user:$user $home
+
+# Start Traffic Scripts
+ansible-playbook system.yaml
 
 sleep 15
 echo "Ready"

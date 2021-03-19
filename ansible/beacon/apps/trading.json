@@ -762,42 +762,54 @@
 										"name": "Trading GTM Requests"
 									}
 								]
-							}
-						],
-						"metrics": [
-							{
-								"measurement": "dns-monitor",
-								"tags": {
-									"source": "Trading East DNS"
-								},
-								"field": "healthStatus",
-								"healthSettings": {
-									"aggregation": "",
-									"timeRange": 1,
-									"operator": "",
-									"criticalThreshold": "",
-									"warningThreshold": "",
-									"noMetricData": "KeepState"
-								},
-								"name": "East DNS Health"
 							},
 							{
-								"measurement": "dns-monitor",
-								"tags": {
-									"source": "Trading West DNS"
+								"name": "Beacon Monitor DNS",
+								"description": "",
+								"labels": {},
+								"dependencies": [],
+								"metrics": [
+									{
+										"measurement": "dns-monitor",
+										"tags": {
+											"source": "Trading East DNS"
+										},
+										"field": "healthStatus",
+										"healthSettings": {
+											"aggregation": "",
+											"timeRange": 1,
+											"operator": "",
+											"criticalThreshold": "",
+											"warningThreshold": "",
+											"noMetricData": "KeepState"
+										},
+										"name": "East DNS Health"
+									},
+									{
+										"measurement": "dns-monitor",
+										"tags": {
+											"source": "Trading West DNS"
+										},
+										"field": "healthStatus",
+										"healthSettings": {
+											"aggregation": "",
+											"timeRange": 1,
+											"operator": "",
+											"criticalThreshold": "",
+											"warningThreshold": "",
+											"noMetricData": "KeepState"
+										},
+										"name": "West DNS Health"
+									}
+								],
+								"healthSourceSettings": {
+									"dependencyHealthAggregation": "WorstOf",
+									"metricsHealthAggregation": "WorstOf"
 								},
-								"field": "healthStatus",
-								"healthSettings": {
-									"aggregation": "",
-									"timeRange": 1,
-									"operator": "",
-									"criticalThreshold": "",
-									"warningThreshold": "",
-									"noMetricData": "KeepState"
-								},
-								"name": "West DNS Health"
+								"insights": []
 							}
 						],
+						"metrics": [],
 						"healthSourceSettings": {
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"

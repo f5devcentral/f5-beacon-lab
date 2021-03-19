@@ -14,37 +14,9 @@
                     ]
                 }
             ],
-            "field": "healthStatus",
-            "function": "mean",
-            "metricName": "East DNS Health"
-        },
-        {
-            "measurement": "dns-monitor",
-            "tags": [
-                {
-                    "key": "source",
-                    "values": [
-                        "Trading East DNS"
-                    ]
-                }
-            ],
             "field": "dnsLookupMs",
             "function": "mean",
             "metricName": "East DNS ms"
-        },
-        {
-            "measurement": "dns-monitor",
-            "tags": [
-                {
-                    "key": "source",
-                    "values": [
-                        "Trading West DNS"
-                    ]
-                }
-            ],
-            "field": "healthStatus",
-            "function": "mean",
-            "metricName": "West DNS Health"
         },
         {
             "measurement": "dns-monitor",
