@@ -1,5 +1,5 @@
 {
-    "title": "Bacon BIG-IP WebVS",
+    "title": "Trading BIG-IP WebVS",
     "description": "",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
@@ -16,7 +16,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "bacon-bip.local"
+                        "trading-bip.local"
                     ]
                 }
             ],
@@ -36,7 +36,7 @@
                 {
                     "key": "source",
                     "values": [
-                        "bacon-bip.local"
+                        "trading-bip.local"
                     ]
                 }
             ],

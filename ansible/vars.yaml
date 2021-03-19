@@ -1,5 +1,5 @@
 http_monitors:
-  - name: "Bacon East"
+  - name: "Trading East"
     url: "changeme"
-  - name: "Bacon West"
+  - name: "Trading West"
     url: "changeme"

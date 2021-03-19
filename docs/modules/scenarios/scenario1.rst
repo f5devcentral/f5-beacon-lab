@@ -18,7 +18,7 @@ Steps
 
 #. Select the name of the application to navigate to the detail page of the **Bacon** app.
 
-   .. NOTE:: In this view you can cleary see that the issue is coming from the East Virtual Machine. It is just as importan that you can see all of the components which are still Healthy according to Beacon. This allows you to narrow focus to just the VM reporting the issue.
+   .. NOTE:: In this view you can clearly see that the issue is coming from the East Virtual Machine. It is just as important that you can see all of the components which are still Healthy according to Beacon. This allows you to narrow focus to just the VM reporting the issue.
 
 #. Select the **East** component and the information within the slide-out.
 
@@ -37,7 +37,7 @@ Steps
    |hae|
 
 
-As an application owner I can now focus my attention on a team to investigate the **East VM** itself. Without beacon I would require each team to proove it is not their problem if the CPU spike is causing an outage for the application.
+As an application owner I can now focus my attention on a team to investigate the **East VM** itself. Without beacon I would require each team to prove it is not their problem if the CPU spike is causing an outage for the application.
 
 
 

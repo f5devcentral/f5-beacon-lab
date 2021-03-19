@@ -1,7 +1,7 @@
 ---
-    bacon:
+    trading:
         hosts:
-            bacon_east:
+            trading_east:
                 ansible_python_interpreter: /usr/bin/python3
                 ansible_host: 10.1.1.5
                 ansible_ssh_private_key_file: /home/ubuntu/.ssh/id_rsa
@@ -13,7 +13,7 @@
                     - mongo-express
                     - locust
                 lb_url: https://10.1.1.7
-            bacon_west:
+            trading_west:
                 ansible_python_interpreter: /usr/bin/python3
                 ansible_host: 10.1.1.6
                 ansible_ssh_private_key_file: /home/ubuntu/.ssh/id_rsa
@@ -31,8 +31,8 @@
             bigip_east:
                 rpms:
                     - https://github.com/F5Networks/f5-declarative-onboarding/releases/download/v1.15.0/f5-declarative-onboarding-1.15.0-3.noarch.rpm
-                    - https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.14.0/f5-telemetry-1.14.0-2.noarch.rpm
-                    - https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.22.1/f5-appsvcs-3.22.1-1.noarch.rpm
+                    - https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.18.0/f5-telemetry-1.18.0-2.noarch.rpm
+                    - https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.26.0/f5-appsvcs-3.26.0-5.noarch.rpm
                 provider:
                     server: 10.1.1.7
                     server_port: 8443
@@ -44,5 +44,4 @@
         hosts:
             localhost:
                 ansible_python_interpreter: /home/ubuntu/.venv/bin/python
-                # ansible_python_interpreter: ./.venv/bin/python
         

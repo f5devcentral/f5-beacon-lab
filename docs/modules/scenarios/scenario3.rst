@@ -1,7 +1,7 @@
 Scenario 3: Beacon Monitor Response String
 ==========================================
 
-In the last scenario, the BIG-IP VirtualServer was offline which then caused the Beacon synthetic monitor to fail. In this scenario, we will create a situation where the Beacon synthetic monitor fails due to an expected response string not being found. Beacon monitors allows for you to specify an expected response string which must be returned by the endpoint in order for the monitor to be considered Healthy. This scenario will cover how this monitor failure will be represented within our application.
+In a previous scenario, the BIG-IP VirtualServer was offline which then caused the Beacon synthetic monitor to fail. In this scenario, we will create a situation where the Beacon synthetic monitor fails due to an expected response string not being found. Beacon monitors allow for you to specify an expected response string which must be returned by the endpoint in order for the monitor to be considered Healthy. This scenario will cover how this monitor failure will be represented within our application.
 
 Steps
 -----
@@ -10,7 +10,7 @@ Steps
 
    |bcn_west|
 
-#. Update the **Response string match** parameter with the value `fail`. This endpoint does not return the string `fail` which cause this monitor to become critical. 
+#. Update the **Response string match** parameter with the value `fail`. This endpoint does not return the string `fail` which causes this monitor to become critical. 
 
    |fail|
 
@@ -28,7 +28,7 @@ Steps
 
 #. To reset the monitor, navigate back to **Configuration >> Monitors** to the **Bacon West** monitor. Remove the string `fail` from the **Response string match** and then select **Save & Close**.
 
-#. Finally, navigate over to **Application Landscape >> List View >> Bacon**  and select the **Health & Events** tab to see the historical events for the changes that were just made. On this page we can see the critical state on the health history bar as well as the events for each components health changes.
+#. Finally, navigate over to **Application Landscape >> List View >> Bacon**  and select the **Health & Events** tab to see the historical events for the changes that were just made. On this page we can see the critical state on the health history bar as well as the events for each component's health changes.
 
    |hae|
 

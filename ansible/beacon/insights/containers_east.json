@@ -1,5 +1,5 @@
 {
-    "title": "Bacon East Containers",
+    "title": "Trading East Containers",
     "description": "",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
@@ -10,13 +10,13 @@
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_mongo_1"
+                        "trading_app_mongo_1"
                     ]
                 },
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 }
             ],
@@ -30,13 +30,13 @@
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_mongo_1"
+                        "trading_app_mongo_1"
                     ]
                 },
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 }
             ],
@@ -50,13 +50,13 @@
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_eapi_1"
+                        "trading_app_eapi_1"
                     ]
                 },
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 }
             ],
@@ -70,13 +70,13 @@
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_eapi_1"
+                        "trading_app_eapi_1"
                     ]
                 },
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 }
             ],
@@ -90,13 +90,13 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 },
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_react_1"
+                        "trading_app_react_1"
                     ]
                 }
             ],
@@ -110,13 +110,13 @@
                 {
                     "key": "container_name",
                     "values": [
-                        "bacon_app_react_1"
+                        "trading_app_react_1"
                     ]
                 },
                 {
                     "key": "host",
                     "values": [
-                        "bacon_east"
+                        "trading_east"
                     ]
                 }
             ],

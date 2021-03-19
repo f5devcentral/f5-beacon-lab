@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Initial boot config configured in /etc/rc.local
+
 date
 
 user="ubuntu"
@@ -10,6 +12,7 @@ develfile=/home/ubuntu/devel
 if test -f "$develfile"; then
     echo "######## RUNNING WITH DEVEL FLAG ########"
     flag="devel"
+    branch=$(head -n 1 "$develfile")
 fi
 
 
@@ -46,7 +49,7 @@ git clone https://github.com/f5devcentral/f5-beacon-lab
 cd f5-beacon-lab/ansible
 
 if [ "$flag" = "devel" ]; then
-    git checkout devel
+    git checkout $branch
 fi
 
 pip3 install -r requirements.txt
@@ -56,7 +59,11 @@ ansible-playbook server_config.yaml
 ansible-playbook bigip_config.yaml
 
 chmod +x /home/ubuntu/f5-beacon-lab/scenarios/*
+chmod +x /home/ubuntu/f5-beacon-lab/traffic-gen/*
 chown -R $user:$user $home
+
+# Start Traffic Scripts
+ansible-playbook system.yaml
 
 sleep 15
 echo "Ready"
