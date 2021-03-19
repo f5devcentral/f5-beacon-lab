@@ -6,7 +6,7 @@
 				"version": "v1"
 			},
 			"application": {
-				"name": "Bacon",
+				"name": "Trading",
 				"description": "",
 				"labels": {
 					"latitude": "47.608013",
@@ -43,7 +43,7 @@
 															{
 																"measurement": "nginx",
 																"tags": {
-																	"host": "bacon_east"
+																	"host": "trading_east"
 																},
 																"field": "requests",
 																"healthSettings": {
@@ -59,7 +59,7 @@
 															{
 																"measurement": "http_response",
 																"tags": {
-																	"host": "bacon_east",
+																	"host": "trading_east",
 																	"server": "http://react:8080"
 																},
 																"field": "http_response_code",
@@ -78,7 +78,8 @@
 															"metricsHealthAggregation": "WorstOf",
 															"dependencyHealthAggregation": "WorstOf"
 														},
-														"insights": []
+														"insights": [],
+														"notificationProfiles": []
 													}
 												],
 												"metrics": [
@@ -86,7 +87,7 @@
 														"measurement": "bigip-virtual",
 														"tags": {
 															"name": "/FrontEnd/WEB/serviceMain",
-															"source": "bacon-bip.local"
+															"source": "trading-bip.local"
 														},
 														"field": "healthStatus",
 														"healthSettings": {
@@ -106,9 +107,10 @@
 												},
 												"insights": [
 													{
-														"name": "Bacon BIG-IP WebVS"
+														"name": "Trading BIG-IP WebVS"
 													}
-												]
+												],
+												"notificationProfiles": []
 											},
 											{
 												"name": "API-VS-E",
@@ -124,8 +126,8 @@
 															{
 																"measurement": "docker_container_cpu",
 																"tags": {
-																	"container_name": "bacon_app_eapi_1",
-																	"host": "bacon_east"
+																	"container_name": "trading_app_eapi_1",
+																	"host": "trading_east"
 																},
 																"field": "usage_percent",
 																"healthSettings": {
@@ -141,7 +143,7 @@
 															{
 																"measurement": "http_response",
 																"tags": {
-																	"host": "bacon_east",
+																	"host": "trading_east",
 																	"server": "http://eapi:3000/apicheck"
 																},
 																"field": "http_response_code",
@@ -160,7 +162,8 @@
 															"metricsHealthAggregation": "WorstOf",
 															"dependencyHealthAggregation": "WorstOf"
 														},
-														"insights": []
+														"insights": [],
+														"notificationProfiles": []
 													}
 												],
 												"metrics": [
@@ -168,7 +171,7 @@
 														"measurement": "bigip-virtual",
 														"tags": {
 															"name": "/FrontEnd/API/serviceMain",
-															"source": "bacon-bip.local"
+															"source": "trading-bip.local"
 														},
 														"field": "healthStatus",
 														"healthSettings": {
@@ -180,24 +183,42 @@
 															"noMetricData": "KeepState"
 														},
 														"name": "healthStatus"
+													},
+													{
+														"field": "activeMemberCnt",
+														"measurement": "bigip-pool",
+														"tags": {
+															"source": "trading-bip.local",
+															"name": "/FrontEnd/API/api_pool"
+														},
+														"name": "activeMemberCnt",
+														"healthSettings": {
+															"aggregation": "Min",
+															"timeRange": 1,
+															"operator": "LessThan",
+															"criticalThreshold": "2",
+															"warningThreshold": "3",
+															"noMetricData": "KeepState"
+														}
 													}
 												],
 												"healthSourceSettings": {
-													"metricsHealthAggregation": "WorstOf",
-													"dependencyHealthAggregation": "WorstOf"
+													"dependencyHealthAggregation": "WorstOf",
+													"metricsHealthAggregation": "WorstOf"
 												},
 												"insights": [
 													{
-														"name": "Bacon BIG-IP APIVS"
+														"name": "Trading BIG-IP APIVS"
 													}
-												]
+												],
+												"notificationProfiles": []
 											}
 										],
 										"metrics": [
 											{
 												"measurement": "bigip-system",
 												"tags": {
-													"source": "bacon-bip.local"
+													"source": "trading-bip.local"
 												},
 												"field": "systemCpuUsage",
 												"healthSettings": {
@@ -213,7 +234,7 @@
 											{
 												"measurement": "bigip-system",
 												"tags": {
-													"source": "bacon-bip.local"
+													"source": "trading-bip.local"
 												},
 												"field": "tmmMemoryUsage",
 												"healthSettings": {
@@ -233,9 +254,10 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon BIG-IP System"
+												"name": "Trading BIG-IP System"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [],
@@ -243,7 +265,8 @@
 									"metricsHealthAggregation": "WorstOf",
 									"dependencyHealthAggregation": "WorstOf"
 								},
-								"insights": []
+								"insights": [],
+								"notificationProfiles": []
 							},
 							{
 								"name": "Beacon Monitor-E",
@@ -254,7 +277,7 @@
 									{
 										"measurement": "monitor",
 										"tags": {
-											"source": "Bacon East"
+											"source": "Trading East"
 										},
 										"field": "healthStatus",
 										"healthSettings": {
@@ -274,9 +297,10 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon East Monitor"
+										"name": "Trading East Monitor"
 									}
-								]
+								],
+								"notificationProfiles": []
 							},
 							{
 								"name": "VM-E",
@@ -292,7 +316,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_east"
+													"host": "trading_east"
 												},
 												"field": "connections_current",
 												"healthSettings": {
@@ -312,16 +336,17 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon MongoDB East"
+												"name": "Trading MongoDB East"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [
 									{
 										"measurement": "cpu",
 										"tags": {
-											"host": "bacon_east"
+											"host": "trading_east"
 										},
 										"field": "usage_user",
 										"healthSettings": {
@@ -341,12 +366,13 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon East Containers"
+										"name": "Trading East Containers"
 									},
 									{
-										"name": "Bacon VM East"
+										"name": "Trading VM East"
 									}
-								]
+								],
+								"notificationProfiles": []
 							}
 						],
 						"metrics": [],
@@ -354,7 +380,8 @@
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"
 						},
-						"insights": []
+						"insights": [],
+						"notificationProfiles": []
 					},
 					{
 						"name": "West",
@@ -380,7 +407,7 @@
 													{
 														"measurement": "nginx",
 														"tags": {
-															"host": "bacon_west"
+															"host": "trading_west"
 														},
 														"field": "requests",
 														"healthSettings": {
@@ -396,7 +423,7 @@
 													{
 														"measurement": "http_response",
 														"tags": {
-															"host": "bacon_west",
+															"host": "trading_west",
 															"server": "http://react:8080"
 														},
 														"field": "http_response_code",
@@ -415,7 +442,8 @@
 													"metricsHealthAggregation": "WorstOf",
 													"dependencyHealthAggregation": "WorstOf"
 												},
-												"insights": []
+												"insights": [],
+												"notificationProfiles": []
 											},
 											{
 												"name": "API-W",
@@ -426,8 +454,8 @@
 													{
 														"measurement": "docker_container_cpu",
 														"tags": {
-															"container_name": "bacon_app_eapi_1",
-															"host": "bacon_west"
+															"container_name": "trading_app_eapi_1",
+															"host": "trading_west"
 														},
 														"field": "usage_percent",
 														"healthSettings": {
@@ -443,7 +471,7 @@
 													{
 														"measurement": "http_response",
 														"tags": {
-															"host": "bacon_west",
+															"host": "trading_west",
 															"server": "http://eapi:3000/apicheck"
 														},
 														"field": "http_response_code",
@@ -462,15 +490,16 @@
 													"metricsHealthAggregation": "WorstOf",
 													"dependencyHealthAggregation": "WorstOf"
 												},
-												"insights": []
+												"insights": [],
+												"notificationProfiles": []
 											}
 										],
 										"metrics": [
 											{
 												"measurement": "docker_container_mem",
 												"tags": {
-													"container_name": "bacon_app_lb_1",
-													"host": "bacon_west"
+													"container_name": "trading_app_lb_1",
+													"host": "trading_west"
 												},
 												"field": "usage_percent",
 												"healthSettings": {
@@ -486,8 +515,8 @@
 											{
 												"measurement": "docker_container_cpu",
 												"tags": {
-													"container_name": "bacon_app_lb_1",
-													"host": "bacon_west"
+													"container_name": "trading_app_lb_1",
+													"host": "trading_west"
 												},
 												"field": "usage_percent",
 												"healthSettings": {
@@ -507,9 +536,10 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon NGINX Plus Requests"
+												"name": "Trading NGINX Plus Requests"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [],
@@ -517,7 +547,8 @@
 									"metricsHealthAggregation": "WorstOf",
 									"dependencyHealthAggregation": "WorstOf"
 								},
-								"insights": []
+								"insights": [],
+								"notificationProfiles": []
 							},
 							{
 								"name": "Beacon Monitor-W",
@@ -528,7 +559,7 @@
 									{
 										"measurement": "monitor",
 										"tags": {
-											"source": "Bacon West"
+											"source": "Trading West"
 										},
 										"field": "healthStatus",
 										"healthSettings": {
@@ -548,9 +579,10 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon West Monitor"
+										"name": "Trading West Monitor"
 									}
-								]
+								],
+								"notificationProfiles": []
 							},
 							{
 								"name": "VM-W",
@@ -566,7 +598,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_west"
+													"host": "trading_west"
 												},
 												"field": "connections_current",
 												"healthSettings": {
@@ -582,7 +614,7 @@
 											{
 												"measurement": "mongodb",
 												"tags": {
-													"host": "bacon_west"
+													"host": "trading_west"
 												},
 												"field": "document_returned",
 												"healthSettings": {
@@ -602,16 +634,17 @@
 										},
 										"insights": [
 											{
-												"name": "Bacon MongoDB West"
+												"name": "Trading MongoDB West"
 											}
-										]
+										],
+										"notificationProfiles": []
 									}
 								],
 								"metrics": [
 									{
 										"measurement": "cpu",
 										"tags": {
-											"host": "bacon_west"
+											"host": "trading_west"
 										},
 										"field": "usage_user",
 										"healthSettings": {
@@ -631,12 +664,13 @@
 								},
 								"insights": [
 									{
-										"name": "Bacon VM West"
+										"name": "Trading VM West"
 									},
 									{
-										"name": "Bacon West Containers"
+										"name": "Trading West Containers"
 									}
-								]
+								],
+								"notificationProfiles": []
 							}
 						],
 						"metrics": [],
@@ -644,56 +678,148 @@
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"
 						},
-						"insights": []
+						"insights": [],
+						"notificationProfiles": []
 					},
 					{
 						"name": "DNS",
 						"description": "",
 						"labels": {},
-						"dependencies": [],
-						"metrics": [
+						"dependencies": [
 							{
-								"measurement": "dns-monitor",
-								"tags": {
-									"source": "Bacon East DNS"
+								"name": "BIG-IP GTM",
+								"description": "",
+								"labels": {},
+								"dependencies": [
+									{
+										"name": "API GSLB",
+										"description": "",
+										"labels": {},
+										"dependencies": [],
+										"metrics": [
+											{
+												"field": "healthStatus",
+												"measurement": "bigip-wide-ip",
+												"tags": {
+													"name": "/FrontEnd/DNS/trading-api.gslb.local",
+													"source": "trading-bip.local"
+												},
+												"name": "healthStatus",
+												"healthSettings": {
+													"aggregation": "",
+													"timeRange": 1,
+													"operator": "",
+													"criticalThreshold": "",
+													"warningThreshold": "",
+													"noMetricData": "KeepState"
+												}
+											}
+										],
+										"healthSourceSettings": {
+											"dependencyHealthAggregation": "WorstOf",
+											"metricsHealthAggregation": "WorstOf"
+										},
+										"insights": []
+									},
+									{
+										"name": "WEB GSLB",
+										"description": "",
+										"labels": {},
+										"dependencies": [],
+										"metrics": [
+											{
+												"field": "healthStatus",
+												"measurement": "bigip-wide-ip",
+												"tags": {
+													"name": "/FrontEnd/DNS/trading-web.gslb.local",
+													"source": "trading-bip.local"
+												},
+												"name": "healthStatus",
+												"healthSettings": {
+													"aggregation": "",
+													"timeRange": 1,
+													"operator": "",
+													"criticalThreshold": "",
+													"warningThreshold": "",
+													"noMetricData": "KeepState"
+												}
+											}
+										],
+										"healthSourceSettings": {
+											"dependencyHealthAggregation": "WorstOf",
+											"metricsHealthAggregation": "WorstOf"
+										},
+										"insights": []
+									}
+								],
+								"metrics": [],
+								"healthSourceSettings": {
+									"dependencyHealthAggregation": "WorstOf",
+									"metricsHealthAggregation": "WorstOf"
 								},
-								"field": "healthStatus",
-								"healthSettings": {
-									"aggregation": "",
-									"timeRange": 1,
-									"operator": "",
-									"criticalThreshold": "",
-									"warningThreshold": "",
-									"noMetricData": "KeepState"
-								},
-								"name": "East DNS Health"
+								"insights": [
+									{
+										"name": "Trading GTM Requests"
+									}
+								]
 							},
 							{
-								"measurement": "dns-monitor",
-								"tags": {
-									"source": "Bacon West DNS"
+								"name": "Beacon Monitor DNS",
+								"description": "",
+								"labels": {},
+								"dependencies": [],
+								"metrics": [
+									{
+										"measurement": "dns-monitor",
+										"tags": {
+											"source": "Trading East DNS"
+										},
+										"field": "healthStatus",
+										"healthSettings": {
+											"aggregation": "",
+											"timeRange": 1,
+											"operator": "",
+											"criticalThreshold": "",
+											"warningThreshold": "",
+											"noMetricData": "KeepState"
+										},
+										"name": "East DNS Health"
+									},
+									{
+										"measurement": "dns-monitor",
+										"tags": {
+											"source": "Trading West DNS"
+										},
+										"field": "healthStatus",
+										"healthSettings": {
+											"aggregation": "",
+											"timeRange": 1,
+											"operator": "",
+											"criticalThreshold": "",
+											"warningThreshold": "",
+											"noMetricData": "KeepState"
+										},
+										"name": "West DNS Health"
+									}
+								],
+								"healthSourceSettings": {
+									"dependencyHealthAggregation": "WorstOf",
+									"metricsHealthAggregation": "WorstOf"
 								},
-								"field": "healthStatus",
-								"healthSettings": {
-									"aggregation": "",
-									"timeRange": 1,
-									"operator": "",
-									"criticalThreshold": "",
-									"warningThreshold": "",
-									"noMetricData": "KeepState"
-								},
-								"name": "West DNS Health"
+								"insights": []
 							}
 						],
+						"metrics": [],
 						"healthSourceSettings": {
 							"metricsHealthAggregation": "WorstOf",
 							"dependencyHealthAggregation": "WorstOf"
 						},
 						"insights": [
 							{
-								"name": "Bacon DNS Monitors"
+								"name": "Trading DNS Monitors"
 							}
-						]
+						],
+						"notificationProfiles": []
 					}
 				],
 				"metrics": [],
@@ -701,7 +827,8 @@
 					"metricsHealthAggregation": "WorstOf",
 					"dependencyHealthAggregation": "WorstOf"
 				},
-				"insights": []
+				"insights": [],
+				"notificationProfiles": []
 			}
 		}
 	]

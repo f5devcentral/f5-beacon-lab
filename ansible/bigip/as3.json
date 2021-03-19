@@ -5,11 +5,65 @@
     "declaration": {
         "class": "ADC",
         "schemaVersion": "3.22.0",
-        "remark": "Bacon",
+        "remark": "Trading",
         "Common": {
             "Shared": {
                 "class": "Application",
                 "template": "shared",
+                "east-dc": {
+                    "class": "GSLB_Data_Center"
+                },
+                "west-dc": {
+                    "class": "GSLB_Data_Center"
+                },
+                "east": {
+                    "class": "GSLB_Server",
+                    "dataCenter": {
+                        "use": "east-dc"
+                    },
+                    "devices": [
+                        {
+                            "address": "10.1.1.7"
+                        }
+                    ],
+                    "virtualServers": [
+                        {
+                            "address": "10.1.1.7",
+                            "port": 85,
+                            "name": "api"
+                        },
+                        {
+                            "address": "10.1.1.7",
+                            "port": 443,
+                            "name": "web"
+                        }
+                    ]
+                },
+                "west": {
+                    "class": "GSLB_Server",
+                    "dataCenter": {
+                        "use": "west-dc"
+                    },
+                    "serverType": "generic-host",
+                    "monitors": [{"bigip": "/Common/tcp"}],
+                    "devices": [
+                        {
+                            "address": "10.1.1.6"
+                        }
+                    ],
+                    "virtualServers": [
+                        {
+                            "address": "10.1.1.6",
+                            "port": 85,
+                            "name": "api"
+                        },
+                        {
+                            "address": "10.1.1.6",
+                            "port": 443,
+                            "name": "web"
+                        }
+                    ]
+                },
                 "telemetry_local_rule": {
                     "class": "iRule",
                     "iRule": "when CLIENT_ACCEPTED {\n  node 127.0.0.1 6514\n}"
@@ -85,13 +139,85 @@
         },
         "FrontEnd": {
             "class": "Tenant",
+            "DNS": {
+                "class": "Application",
+                "trading-api-pool": {
+                    "class": "GSLB_Pool",
+                    "resourceRecordType": "A",
+                    "members": [
+                        {
+                            "server": {
+                                "use": "/Common/Shared/east"
+                            },
+                            "virtualServer": "api"
+                        },
+                        {
+                            "server": {
+                                "use": "/Common/Shared/west"
+                            },
+                            "virtualServer": "api"
+                        }
+                    ]
+                },
+                "trading-web-wideip": {
+                    "class": "GSLB_Domain",
+                    "domainName": "trading-web.gslb.local",
+                    "resourceRecordType": "A",
+                    "pools": [
+                        {
+                            "use": "trading-web-pool"
+                        }
+                    ]
+                },
+                "trading-web-pool": {
+                    "class": "GSLB_Pool",
+                    "resourceRecordType": "A",
+                    "members": [
+                        {
+                            "server": {
+                                "use": "/Common/Shared/east"
+                            },
+                            "virtualServer": "web"
+                        },
+                        {
+                            "server": {
+                                "use": "/Common/Shared/west"
+                            },
+                            "virtualServer": "web"
+                        }
+                    ]
+                },
+                "trading-api-wideip": {
+                    "class": "GSLB_Domain",
+                    "domainName": "trading-api.gslb.local",
+                    "resourceRecordType": "A",
+                    "pools": [
+                        {
+                            "use": "trading-api-pool"
+                        }
+                    ]
+                },
+                "listener": {
+                    "class": "Service_UDP",
+                    "virtualPort": 53,
+                    "virtualAddresses": [
+                        "10.1.1.7"
+                    ],
+                    "profileUDP": {
+                        "bigip": "/Common/udp"
+                    },
+                    "profileDNS": {
+                        "bigip": "/Common/dns"
+                    }
+                }
+            },
             "WEB": {
                 "class": "Application",
                 "template": "https",
                 "serviceMain": {
                     "class": "Service_HTTPS",
                     "virtualAddresses": [
-                        "0.0.0.0"
+                        "10.1.1.7"
                     ],
                     "redirect80": false,
                     "pool": "web_pool",
@@ -103,7 +229,10 @@
                     "profileAnalytics": {
                         "use": "web_data"
                     },
-                    "serverTLS": "webtls"
+                    "serverTLS": "webtls",
+                    "policyWAF": {
+                        "use": "block_policy"
+                    }
                 },
                 "web_pool": {
                     "class": "Pool",
@@ -151,6 +280,11 @@
                     "collectMethod": true,
                     "collectOsAndBrowser": true,
                     "sessionTimeoutMinutes": 30
+                },
+                "block_policy": {
+                    "class": "WAF_Policy",
+                    "url": "https://raw.githubusercontent.com/f5devcentral/f5-beacon-lab/devwrk/ansible/bigip/xml_block_141.xml",
+                    "ignoreChanges": true
                 }
             },
             "API": {
@@ -161,7 +295,7 @@
                     "redirect80": false,
                     "virtualPort": 85,
                     "virtualAddresses": [
-                        "0.0.0.0"
+                        "10.1.1.7"
                     ],
                     "pool": "api_pool",
                     "profileAnalytics": {
@@ -183,6 +317,12 @@
                         },
                         {
                             "servicePort": 3001,
+                            "serverAddresses": [
+                                "10.1.1.5"
+                            ]
+                        },
+                        {
+                            "servicePort": 3002,
                             "serverAddresses": [
                                 "10.1.1.5"
                             ]
@@ -225,4 +365,4 @@
             }
         }
     }
-  }
+}

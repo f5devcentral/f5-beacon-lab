@@ -1,0 +1,30 @@
+- name: Control Server Setup
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Copy traffic service to Systemd
+      ansible.builtin.copy:
+        src: ./sysd/traffic.service
+        dest: /etc/systemd/system/traffic.service
+      become: true
+
+    - name: Start HTTP traffic service
+      ansible.builtin.systemd:
+        state: started
+        name: traffic
+      become: true
+
+    - name: Copy dns traffic service to Systemd
+      ansible.builtin.copy:
+        src: ./sysd/dnstraffic.service
+        dest: /etc/systemd/system/dnstraffic.service
+      become: true
+
+    - name: Start DNS traffic service
+      ansible.builtin.systemd:
+        state: started
+        name: dnstraffic
+      become: true

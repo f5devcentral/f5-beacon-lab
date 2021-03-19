@@ -4,12 +4,12 @@
     "async": true,
     "Common": {
         "class": "Tenant",
-        "hostname": "bacon-bip.local",
+        "hostname": "trading-bip.local",
         "dbvars": {
             "class": "DbVariables",
             "ui.advisory.enabled": true,
             "ui.advisory.color": "green",
-            "ui.advisory.text": "Bacon EAST BIG-IP",
+            "ui.advisory.text": "TRADING EAST BIG-IP",
             "restjavad.useextramb": true,
             "provision.extramb": "500"
         },

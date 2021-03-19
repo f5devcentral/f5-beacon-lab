@@ -1,0 +1,64 @@
+{
+  "title": "Trading GTM Requests",
+  "category": "INS_CAT_OPERATIONS",
+  "metrics": [
+      {
+          "measurement": "bigip-wide-ip",
+          "tags": [
+              {
+                  "key": "source",
+                  "values": [
+                      "trading-bip.local"
+                  ]
+              }
+          ],
+          "field": "requests",
+          "function": "difference",
+          "metricName": "requests"
+      },
+      {
+          "measurement": "bigip-wide-ip",
+          "tags": [
+              {
+                  "key": "source",
+                  "values": [
+                      "trading-bip.local"
+                  ]
+              }
+          ],
+          "field": "preferred",
+          "function": "difference",
+          "metricName": "preferred"
+      },
+      {
+          "measurement": "bigip-wide-ip",
+          "tags": [
+              {
+                  "key": "source",
+                  "values": [
+                      "trading-bip.local"
+                  ]
+              }
+          ],
+          "field": "alternate",
+          "function": "difference",
+          "metricName": "alternate"
+      },
+      {
+          "measurement": "bigip-wide-ip",
+          "tags": [
+              {
+                  "key": "source",
+                  "values": [
+                      "trading-bip.local"
+                  ]
+              }
+          ],
+          "field": "fallback",
+          "function": "difference",
+          "metricName": "fallback"
+      }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_BAR",
+  "period": "1h"
+}

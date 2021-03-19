@@ -1,5 +1,5 @@
 {
-    "title": "Bacon Telegraf HTTP Monitor West",
+    "title": "Trading Telegraf HTTP Monitor West",
     "description": "",
     "category": "INS_CAT_OPERATIONS",
     "severity": "INS_SEV_INFORMATIONAL",
@@ -10,7 +10,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 },
                 {
@@ -30,7 +30,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 },
                 {
@@ -50,7 +50,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 },
                 {
@@ -70,7 +70,7 @@
                 {
                     "key": "host",
                     "values": [
-                        "bacon_west"
+                        "trading_west"
                     ]
                 },
                 {

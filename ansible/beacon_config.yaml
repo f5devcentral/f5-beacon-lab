@@ -23,14 +23,14 @@
 
     - set_fact:
         http_monitors:
-          - name: "Bacon East"
+          - name: "Trading East"
             url: "https://{{udfenv.json | json_query(\"deployment.components[?name=='BIG-IP'].accessMethods.https[] | [?label=='East URL Frontend'].host\") | first}}"
-          - name: "Bacon West"
+          - name: "Trading West"
             url: "https://{{udfenv.json | json_query(\"deployment.components[?name=='West'].accessMethods.https[] | [?label=='West URL Frontend'].host\") | first}}"
         dns_monitors:
-          - name: "Bacon East DNS"
+          - name: "Trading East DNS"
             domain: "{{udfenv.json | json_query(\"deployment.components[?name=='BIG-IP'].accessMethods.https[] | [?label=='East URL Frontend'].host\") | first}}"
-          - name: "Bacon West DNS"
+          - name: "Trading West DNS"
             domain: "{{udfenv.json | json_query(\"deployment.components[?name=='West'].accessMethods.https[] | [?label=='West URL Frontend'].host\") | first}}"
 
 
@@ -55,8 +55,8 @@
           Authorization: "Bearer {{ authtoken.json.access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body:
-          name: bacon_token
-          description: Demo-lab token for Bacon App
+          name: trading_token
+          description: Demo-lab token for Trading App
       register: createdToken
       delegate_to: localhost
 
@@ -127,7 +127,7 @@
 
 
 - name: Update Telegraf on App Servers
-  hosts: bacon
+  hosts: trading
   gather_facts: false
   
   vars:
