@@ -1,0 +1,12 @@
+{
+  "name": "DemoEmail",
+  "channelConfigs": [
+    {
+      "channel_id": "{{ channelID }}",
+      "name": "Trading-Demo-Email",
+      "payload": {% raw %}"<hr style=\"height:2px;border-width:0;background-color:#{{healthstatuscolor}}\">\n<h2>F5 Beacon Notification</h2>\n{{healthstatus}} Alert for {{entitytype}} Health Change<p/><br/>\n<b>{{entitytype}}:</b> {{entityname}}<br/>\n<b>Status:</b> {{healthstatus}}<br/>\n<b>Message:</b> {{healthreason}}</p>\n<b><a href=\"{{entityurl}}\">Go to issue</a></b>"{% endraw %}
+    }
+  ],
+  "description": "",
+  "notifyStatuses": ["AVAILABLE", "CRITICAL", "DISABLED", "NONE", "WARNING"]
+}

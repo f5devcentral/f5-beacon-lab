@@ -832,7 +832,11 @@
           "dependencyHealthAggregation": "WorstOf"
         },
         "insights": [],
-        "notificationProfiles": []
+        "notificationProfiles": [
+          {
+            "profileName": "DemoEmail"
+          }
+        ]
       }
     }
   ]
