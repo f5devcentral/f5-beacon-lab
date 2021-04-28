@@ -45,6 +45,9 @@
       register: authtoken
       delegate_to: localhost
 
+    - set_fact:
+        access_token: "{{ authtoken.json.access_token }}"
+
     - name: Create Ingest Token
       uri:
         url: "{{csAPI}}/beacon/v1/telemetry-token"
@@ -52,7 +55,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          Authorization: "Bearer {{ access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body:
           name: trading_token
@@ -63,6 +66,8 @@
     - set_fact:
         beacon_token: "{{ createdToken.json.accessToken }}"
 
+    - include_tasks: beacon/notification/channel-profile.yaml
+
     - name: Create Insights
       uri:
         url: "{{csAPI}}/beacon/v1/insights"
@@ -70,7 +75,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          Authorization: "Bearer {{ access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body: "{{ lookup('file', item) }}"
       register: createdToken
@@ -85,7 +90,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          Authorization: "Bearer {{ access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body: "{{ lookup('file', item) }}"
         status_code: 202
@@ -101,7 +106,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          Authorization: "Bearer {{ access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body: "{{ lookup('template', './beacon/monitors/http_monitor.j2') }}"
         status_code: 202
@@ -117,7 +122,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          Authorization: "Bearer {{ access_token }}"
           X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
         body: "{{ lookup('template', './beacon/monitors/dns_monitor.j2') }}"
         status_code: 202
