@@ -45,6 +45,19 @@
 - debug:
     msg: "{{ channelID }}"
 
+- name: Delete Notification Profile
+  uri:
+    url: "{{csAPI}}/beacon/v1/notification-profiles/DemoEmail"
+    method: DELETE
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer {{ access_token }}"
+      X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+    status_code: 200
+  ignore_errors: yes
+  delegate_to: localhost
+
 - name: Create Notification Profile
   uri:
     url: "{{csAPI}}/beacon/v1/notification-profiles"
