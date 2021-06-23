@@ -1,0 +1,73 @@
+---
+- name: Create or Read Channel
+  block:
+
+    - name: Create Email Notification Channel
+      uri:
+        url: "{{csAPI}}/v1/svc-notification/accounts/{{beacon_acct}}/channels"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body:
+          account_id: "{{beacon_acct}}"
+          name: "Trading-Demo-Email"
+          description: "Email notification for Beacon Demo"
+          channel_type: "EMAIL"
+          target: "{{ beacon_un }}"
+        status_code: 200
+      register: Channel
+      delegate_to: localhost
+
+    - set_fact:
+        channelID: "{{ Channel.json.channel_id }}"
+
+  rescue:
+    - name: GET Email Notification Channels
+      uri:
+        url: "{{csAPI}}/v1/svc-notification/accounts/{{beacon_acct}}/channels"
+        method: GET
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: ""
+        status_code: 200
+      register: existingChannels
+      delegate_to: localhost
+
+    - set_fact:
+        channelID: "{{ existingChannels.json | json_query(\"channels[?name=='Trading-Demo-Email'].channel_id\") | first}}"
+
+- debug:
+    msg: "{{ channelID }}"
+
+- name: Delete Notification Profile
+  uri:
+    url: "{{csAPI}}/beacon/v1/notification-profiles/DemoEmail"
+    method: DELETE
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer {{ access_token }}"
+      X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+    status_code: 200
+  ignore_errors: yes
+  delegate_to: localhost
+
+- name: Create Notification Profile
+  uri:
+    url: "{{csAPI}}/beacon/v1/notification-profiles"
+    method: POST
+    body_format: json
+    headers:
+      Content-Type: application/json
+      Authorization: "Bearer {{ access_token }}"
+      X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+    body: "{{ lookup('template', './profile.j2') }}"
+    status_code: 200
+  register: createdProfile
+  delegate_to: localhost
